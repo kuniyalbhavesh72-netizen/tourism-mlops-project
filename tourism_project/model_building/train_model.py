@@ -45,7 +45,7 @@ for name, model in models.items():
 
         mlflow.log_param("model_type", name)
         mlflow.log_metrics({"accuracy": acc, "precision": prec, "recall": rec, "f1": f1, "roc_auc": auc})
-        mlflow.sklearn.log_model(model, name)
+        mlflow.sklearn.log_model(model, name, serialization_format=mlflow.sklearn.SERIALIZATION_FORMAT_CLOUDPICKLE)
 
         print(f"{name}: accuracy={acc:.4f} precision={prec:.4f} recall={rec:.4f} f1={f1:.4f} roc_auc={auc:.4f}")
 
